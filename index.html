@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .section { display: none; }
+    .active { display: block; }
+  </style>
+</head>
+<body class="font-sans bg-green-100">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow fixed w-full z-10">
+    <div class="max-w-6xl mx-auto px-4 flex justify-between items-center h-16">
+      <a href="#" class="text-xl font-bold">MyPortfolio</a>
+      
+      <div class="hidden md:flex space-x-6">
+        <button data-section="home" class="nav-link">Home</button>
+        <button data-section="about" class="nav-link">About me</button>
+        <button data-section="projects" class="nav-link">Projects</button>
+        <button data-section="contact" class="nav-link">Contact</button>
+      </div>
+      <div class="md:hidden">
+        <button id="menu-btn" class="focus:outline-none">☰</button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-200 p-4">
+      <button data-section="home" class="block w-full text-left nav-link">Home</button>
+      <button data-section="about" class="block w-full text-left nav-link">About </button>
+      <button data-section="projects" class="block w-full text-left nav-link">Projects</button>
+      <button data-section="contact" class="block w-full text-left nav-link">Contact</button>
+    </div>
+  </nav>
+
+  <!-- Sections -->
+  <main class="pt-20 max-w-4xl mx-auto px-4">
+
+    <!-- Home -->
+    <section id="home" class="section active text-center">
+        <img src="profile.jpg" alt="Profile" class="rounded-full shadow-xl border-4 border-blue-100 w-64 h-64 object-cover mx-auto">
+      <h1 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h1>
+      <p class="mb-4"></p>
+      
+      <button class="bg-blue-500 text-white px-4 py-2 rounded">Contact Me</button>
+    </section>
+
+    
+    <section id="about" class="section">
+      <h2 class="text-3xl font-bold mb-4">About Me</h2>
+      <p class="mb-2">Professional introduction here.</p>
+      <ul class="list-disc pl-6">
+        <li> Proficient in Microsoft Office Suite, specifically Excel, Word, and PowerPoint</li>
+        <li>Strong programming skills in Python, Java, and JavaScript.  </li>
+        <li>Excellent communication and project management skills, with ability to lead cross-functional teams</li>
+      </ul>
+      <h3 class="mt-4 font-semibold">Experience</h3>
+      <p>Timeline of work experience...</p>
+      <h3 class="mt-4 font-semibold">Education</h3>
+      <p> Master's Degree in Information Technology*, ZPPSU University (Zamboanga peninsula polytechnic state university)
+    - Specialization: Cybersecurity, Data Science, or Artificial Intelligence
+- *Online Courses or Training:*
+    - Completed courses on Coursera, edX, or Udemy in areas like machine learning, cloud computing, or cybersecurity </p>
+    </section>
+
+    
+    <section id="projects" class="section">
+      <h2 class="text-3xl font-bold mb-4"> Project</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg">
+          <img src="https://via.placeholder.com/300x200" alt="Project 1" class="mb-2">
+          <h3 class="font-semibold">  Web Development:</h3>
+          <p class="text-sm"> 1. *Personal Portfolio Website*: Designed and developed a personal portfolio website showcasing skills, experience, and projects.
+2. *Blog or Content Management System*: Built a custom blog or content management system using a framework like WordPress or Django. </p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg">
+          <img src="https://via.placeholder.com/300x200" alt="Project 2" class="mb-2">
+          <h3 class="font-semibold"> Cybersecurity: </h3>
+          <p class="text-sm">1. *Network Security Assessment*: Conducted a security assessment of a network infrastructure, identifying vulnerabilities and recommending mitigation strategies.
+2. *Incident Response Plan*: Developed an incident response plan for a fictional company, outlining procedures for responding to security breaches.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow hover:shadow-lg">
+          <img src="https://via.placeholder.com/300x200" alt="Project 3" class="mb-2">
+          <h3 class="font-semibold">Software Development:</h3>
+          <p class="text-sm">1. *Predictive Modeling*: Built a predictive model using machine learning algorithms to forecast sales or customer churn.
+2. *Data Visualization Dashboard*: Created an interactive dashboard using Tableau or Power BI to visualize trends and insights in a dataset.</p>
+        </div>
+      </div>
+    </section>
+
+   
+    <section id="contact" class="section">
+      <h2 class="text-3xl font-bold mb-4">Contact</h2>
+      <form class="space-y-4">
+        <input type="text" placeholder="Name" class="w-full border p-2 rounded">
+        <input type="email" placeholder="Email" class="w-full border p-2 rounded">
+        <textarea placeholder="Message" class="w-full border p-2 rounded"></textarea>
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Submit</button>
+      </form>
+    </section>
+
+  </main>
+
+  <script>
+    const links = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll(".section");
+    const menuBtn = document.getElementById("menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    // Navigation
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        sections.forEach(sec => sec.classList.remove("active"));
+        document.getElementById(link.dataset.section).classList.add("active");
+        mobileMenu.classList.add("hidden");
+      });
+    });
+
+    // Mobile menu toggle
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+</body>
+</html>
